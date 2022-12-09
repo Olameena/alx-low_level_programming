@@ -8,7 +8,7 @@
  * return: Always 0 (Succesful)
 */
 
-int main(void)
+int main()
 {
 
 	/* sizeof evaluates the size of a variable */
