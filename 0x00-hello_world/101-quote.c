@@ -4,7 +4,7 @@
 /**
  * main - print excatly and that piece of art is useful
  *
- * Return: always 0
+ * Return: always 1
 */
 int main(void)
 {
