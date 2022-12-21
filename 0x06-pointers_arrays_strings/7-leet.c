@@ -1,33 +1,35 @@
 #include "main.h"
 
 /**
- * leet - encode into 1337speak
+ * leet - encodes a string into 1337
  *
- * @n: input value
+ * @s: input string.
  *
- * Return: n value
+ * Return: the pointer dest.
  */
 
-char *leet(char *n)
+char *leet(char *s)
 
 {
-	int i, j;
+	int count = 0, i;
 
-	char s1[] = "aAeEoOtTlL";
-	char s2[] = "4433007711";
+	int lower_case[] = {97, 101, 111, 116, 108};
 
-	for (i = 0; n[i] != '\0'; i++)
+	int upper_case[] = {65, 69, 79, 84, 76};
+
+	int numbers[] = {52, 51, 48, 55, 49};
+
+	while (*(s + count) != '\0')
 	{
-
-		for (j = 0; j < 10; j++)
-		 {
-
-			 if (n[i] == s1[j])
-			 {
-
-				 n[i] = s2[j];
-			 }
-		 }
-	 }
-	 return (n);
+		for (i = 0; i < 5; i++)
+		{
+			if (*(s + count) == lower_case[i] || *(s + count) == upper_case[i])
+			{
+				*(s + count) = numbers[i];
+				break;
+			}
+		}
+		count++;
+	}
+	return (s);
 }
