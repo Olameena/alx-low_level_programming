@@ -1,41 +1,46 @@
-#include "holberton.h"
+#include <stdio.h>
+#include "main.h"
+
 /**
- * append_text_to_file - Append text at the end of a file
- * @filename: name of the file to create.
- * @text_content: text to write inside the file.
- *
- * Return: 1 if text_content was appened, -1 otherwise.
- */
+  * append_text_to_file - ...
+  * @filename: ...
+  * @text_content: ...
+  *
+  * Return: ...
+  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int fd_open, fd_write;
+	int fd;
 
-	if (filename == NULL)
+	if (!filename)
 		return (-1);
-	fd_open = open(filename, O_RDWR | O_APPEND);
-	if (fd_open == -1)
+
+	fd = open(filename, O_WRONLY | O_APPEND);
+	if (fd == -1)
 		return (-1);
-	if (text_content != NULL)
+
+	if (text_content)
 	{
-		fd_write = write(fd_open, text_content, _strlen(text_content));
-		if (fd_write == -1)
+		if (write(fd, text_content, _strlen(text_content)) == -1)
 			return (-1);
 	}
-	close(fd_open);
+
+	close(fd);
 	return (1);
 }
 
 /**
- * _strlen - calculate the lenght of a string.
- * @str: array of characters.
- *
- * Return: lenght of the string.
- */
-int _strlen(char *str)
+  * _strlen - Returns the length of a string
+  * @s: String to count
+  *
+  * Return: String length
+  */
+int _strlen(char *s)
 {
-	int count = 0;
+	int c = 0;
 
-	while (*str++)
-		count++;
-	return (count);
+	while (s[c])
+		c++;
+
+	return (c);
 }
